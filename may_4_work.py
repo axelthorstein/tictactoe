@@ -72,7 +72,7 @@ def check_o_winner(board):
 
 
 #this is how players interact with the game
-def apply_move():
+def apply_move(board):
 #takes the input of X or 0
     move = get_move()
 #takes the row and column, where user would like to place move
@@ -87,7 +87,7 @@ def apply_move():
 
 def main():
     board = make_board()
-    apply_move()
+    apply_move(board)
 
 
 
