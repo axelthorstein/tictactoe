@@ -39,9 +39,6 @@ def view_board(board):
     return
 
 
-board = make_board()
-
-
 def check_x_winner(board):
     for space in board:
         if board[0][0] == 'X' and board[1][1] == 'X' and board[2][2] == 'X':
@@ -72,7 +69,7 @@ def check_o_winner(board):
             return "O Player, You Are The Ultimate Tic-Tac-Toe CHAMPION"
         else:
             return "No 1 Has 1"
-      
+
 
 #this is how players interact with the game
 def apply_move():
@@ -86,8 +83,16 @@ def apply_move():
     check_x_winner(board)
     check_o_winner(board)
     view_board(board)
-    
-    
+
+
+def main():
+    board = make_board()
+    apply_move()
+
+
+
+if __name__ == '__main__':
+  main()
     
 #first attempted check method
 ''''
