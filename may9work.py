@@ -1,5 +1,3 @@
-import random
-
 # Obectives:
 # 
 # - Something to handle the board - check
@@ -10,7 +8,6 @@ import random
 # - Something to catch if a move has already been called
 
 def get_move():
-    return random.choice(('X', 'O'))
     letter = input('Please input X or O: ')
     while letter not in ('X', 'O'):
       letter = input('Please input X or O (be aware of capitalization): ')
@@ -55,7 +52,7 @@ def check_x_winner(board):
         return True
     elif board[1][0] == 'X' and board[1][1] == 'X' and board[1][2] == 'X':
         return True
-    elif board[0][2] == 'X' and board[1][2] == 'X'  and board[2][2] =='X':
+    elif board[2][0] == 'X' and board[2][1] == 'X'  and board[2][2] =='X':
         return True
     else:
         return False
@@ -76,7 +73,7 @@ def check_o_winner(board):
         return True
     elif board[1][0] == 'O' and board[1][1] == 'O' and board[1][2] == 'O':
         return True
-    elif board[0][2] == 'O' and board[1][2] == 'O'  and board[2][2] =='O':
+    elif board[2][0] == 'O' and board[2][1] == 'O'  and board[2][2] =='O':
         return True
     else:
         return False
@@ -85,12 +82,15 @@ def check_o_winner(board):
 def commence():
     board = make_board()
     # this is how players interact with the game
-    while check_x_winner(board) == False or check_o_winner(board) == False:
+    while check_x_winner(board) == False and check_o_winner(board) == False:
        # takes the input of X or 0
         move = get_move()
        # takes the row and column, where user would like to place move
         place = get_place()
         # updates the board within view_board
+        while board[int(place[0])][int(place[1])] in ('X', 'O'):
+            print("This move has been taken, try again...")
+            place = get_place()
         board[int(place[0])][int(place[1])] = move
         # user check the board
         view_board(board)
